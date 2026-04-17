@@ -1,0 +1,1866 @@
+{
+  "name": "Apart",
+  "nodes": [
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Buttons listener').item.json.callback_query.message.reply_markup.inline_keyboard[0][0].text }}",
+                    "rightValue": "={{ $env.APART_TELEGRAM_CALLBACK_DATA_DN_BUTTON_TEXT }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "d4218edc-1636-4fda-b650-c65598d5f077"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "c7e65ec8-17c9-42a4-a713-62f69af27f0b",
+                    "leftValue": "=",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        224,
+        0
+      ],
+      "id": "b53e800d-67f6-4485-ac3f-b942f540c79d",
+      "name": "Choose button"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "iAwaa0xgcxDYOvoH",
+          "mode": "list",
+          "cachedResultName": "apart",
+          "cachedResultUrl": "/projects/FIPGb9t2kll3gyD4/datatables/iAwaa0xgcxDYOvoH"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "ap_id",
+              "keyValue": "={{ JSON.parse($('Buttons listener').item.json.callback_query.data).id }}"
+            },
+            {
+              "keyName": "host",
+              "keyValue": "={{ JSON.parse($('Buttons listener').item.json.callback_query.data).h }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "disableNotifications": true
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "ap_id",
+              "displayName": "ap_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "host",
+              "displayName": "host",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "link",
+              "displayName": "link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "disableNotifications",
+              "displayName": "disableNotifications",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        448,
+        0
+      ],
+      "id": "78bddedd-54d4-411e-a807-da805a1d2614",
+      "name": "Disable notifications for apart in data table"
+    },
+    {
+      "parameters": {
+        "updates": [
+          "callback_query"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "87a550ee-bd43-46db-81b8-50820daf4743",
+      "name": "Buttons listener",
+      "webhookId": "62842082-5560-4b9e-8a00-0b886ffaaf15",
+      "credentials": {
+        "telegramApi": {
+          "id": "4QrKerBSFNBAsQoo",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        4704,
+        688
+      ],
+      "id": "d5033122-3170-47f0-b6fe-0976e851f88c",
+      "name": "Timeout for avoid ban",
+      "webhookId": "819f3278-d8d5-4089-abce-b6a5d3fc2687"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "iAwaa0xgcxDYOvoH",
+          "mode": "list",
+          "cachedResultName": "apart",
+          "cachedResultUrl": "/projects/FIPGb9t2kll3gyD4/datatables/iAwaa0xgcxDYOvoH"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "ap_id",
+              "keyValue": "={{ $('Loop over aparts list').item.json.id }}"
+            },
+            {
+              "keyName": "host",
+              "keyValue": "={{ $('Loop over aparts list').item.json.host }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "disableNotifications": false,
+            "phone": "={{ $('Hide apart with specific keywords').item.json.phone }}",
+            "ap_id": "={{ $('Loop over aparts list').item.json.id }}",
+            "link": "={{ $('Loop over aparts list').item.json.link }}",
+            "host": "={{ $('Loop over aparts list').item.json.host }}"
+          },
+          "matchingColumns": [
+            "col"
+          ],
+          "schema": [
+            {
+              "id": "ap_id",
+              "displayName": "ap_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "host",
+              "displayName": "host",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "link",
+              "displayName": "link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "disableNotifications",
+              "displayName": "disableNotifications",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        4480,
+        496
+      ],
+      "id": "ae4d57f4-71cc-4e85-a334-33608c0fc3fd",
+      "name": "Add apart to data table"
+    },
+    {
+      "parameters": {
+        "operation": "sendPhoto",
+        "chatId": "={{ $env.APART_TELEGRAM_CHAT_ID }}",
+        "file": "={{ $('Hide apart with specific keywords').item.json.cover_url }}",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "={{ $env.APART_TELEGRAM_CALLBACK_DATA_DN_BUTTON_TEXT }}",
+                    "additionalFields": {
+                      "callback_data": "={\"id\":\"{{ $('Loop over aparts list').item.json.id }}\",\"h\":\"{{ $('Loop over aparts list').item.json.host }}\"}"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "additionalFields": {
+          "caption": "={{\n(() => {\n\n  const escape = (str) => (str || '').toString().replace(/([\\\\_*`|!.[\\](){}>+#=~-])/gm, '\\\\$1');\n\n  const lines = [];\n\n  const link = $('Loop over aparts list').item.json.link;\n  if (link) {\n      lines.push(escape(link));\n      lines.push('');\n  }\n\n  const price = $('Hide apart with specific keywords').item.json.price\n  if (price) {\n      lines.push(`*Price:* ${escape(price)}`);\n  }\n\n  const address = $('Hide apart with specific keywords').item.json.address\n  if (address) {\n      lines.push(`*Address:* ${escape(address)}`);\n  }\n\n  const last_update = $('Hide apart with specific keywords').item.json.last_update\n  if (last_update) {\n      lines.push(`*Last update:* ${escape(last_update)}`);\n  }\n\n  const creation_date = $('Hide apart with specific keywords').item.json.creation_date\n  if (creation_date) {\n      lines.push(`*Creation date:* ${escape(creation_date)}`);\n  }\n\n  const phone = $('Hide apart with specific keywords').item.json.phone\n  if (phone) {\n      lines.push(`*Phone:* ${escape(phone)}`);\n      const tags = phone.split(/(?=\\+)/).map(p => p.replace(/\\D/g, '')).filter(p => p).map(p => `#P${p}`).join(' ');\n      if (tags) {\n          lines.push(`*Tags:* ${escape(tags)}`);\n      }\n  }\n\n  const description = $('Hide apart with specific keywords').item.json.description\n  if (description) {\n      lines.push('');\n      lines.push(`*Description:*`);\n      const descText = description.replace(/<br>\\n/gm, \"\\u000a\"); \n      lines.push(escape(descText));\n  }\n\n  return lines.join('\\n').substring(0, 1024);\n})()\n}}\n",
+          "disable_notification": "={{ $('Count of listings with this phone').item.json.count_phone > 0 }}",
+          "parse_mode": "MarkdownV2"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        4256,
+        320
+      ],
+      "id": "183e9c95-1f4a-4fc7-9523-a170d9b8c186",
+      "name": "Send apart to user",
+      "webhookId": "a65bbb06-18d7-4443-8cec-3e9cf8c59a5d",
+      "credentials": {
+        "telegramApi": {
+          "id": "4QrKerBSFNBAsQoo",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.APART_TELEGRAM_CHAT_ID }}",
+        "text": "={{ $('Loop over aparts list').item.json.link }} looks like the listing from a real estate agency. Found {{ $('Count of listings with this phone').item.json.count_phone }} listings with this phone!",
+        "additionalFields": {
+          "appendAttribution": false,
+          "disable_notification": true
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        4704,
+        272
+      ],
+      "id": "1e62aebf-5a34-4465-97a1-5989e8b65930",
+      "name": "Send warning about real estate agency",
+      "webhookId": "20db04e9-0eab-48f0-91ca-eaae4b03426e",
+      "credentials": {
+        "telegramApi": {
+          "id": "4QrKerBSFNBAsQoo",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Loop over aparts list').item.json.link }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2688,
+        480
+      ],
+      "id": "05efb0a1-22b4-48ea-85b3-27c5d23a646b",
+      "name": "Get apart from onliner.by"
+    },
+    {
+      "parameters": {
+        "language": "pythonNative",
+        "pythonCode": "# Generated by AI\nimport json\nfrom html.parser import HTMLParser\n\n# 1. Define the Parser Class\nclass OnlinerApartmentParser(HTMLParser):\n    def __init__(self):\n        super().__init__()\n        self.data = {\n            \"cover_url\": None,\n            \"address\": \"\",\n            \"last_update\": None,\n            \"creation_date\": None,\n            \"description\": \"\",\n            \"price\": None,\n            \"phone\": \"\"\n        }\n        \n        # Internal state tracking\n        self.in_cover = False\n        self.in_address = False\n        self.in_creation_date = False\n        self.in_last_update = False\n        self.in_description = False\n        self.in_price = False\n        self.in_phone_list = False\n        self.capture_phone = False\n        self.phones_found = []\n\n    def handle_starttag(self, tag, attrs):\n        attrs_dict = dict(attrs)\n        classes = attrs_dict.get('class', '').split()\n\n        # Cover URL\n        # Look for <div class=\"apartment-cover\" style=\"background-image: url(...)\">\n        if tag == 'div' and 'apartment-cover' in classes:\n            style = attrs_dict.get('style', '')\n            if 'background-image' in style:\n                # Simple extraction of url(...)\n                start_marker = 'url('\n                start = style.find(start_marker)\n                if start != -1:\n                    end = style.find(')', start)\n                    url_raw = style[start + len(start_marker):end]\n                    # Clean up quotes if present\n                    self.data['cover_url'] = url_raw.strip('\"\\'')\n\n        # Address\n        # Look for <div class=\"apartment-info__sub-line apartment-info__sub-line_large\">\n        if tag == 'div' and 'apartment-info__sub-line_large' in classes:\n            self.in_address = True\n\n        # Price\n        # Look for <span class=\"apartment-bar__price-value_primary\">\n        if tag == 'span' and 'apartment-bar__price-value_primary' in classes:\n            self.in_price = True\n\n        # Description\n        # Look for <div class=\"apartment-info__sub-line apartment-info__sub-line_extended-bottom\">\n        # Note: There might be multiple blocks with this class. The description is usually the first one or distinct by context.\n        # Based on the file structure, the description is in the 'apartment-info__cell_66' block inside this specific sub-line class.\n        if tag == 'div' and 'apartment-info__sub-line_extended-bottom' in classes:\n            # We assume description is empty initially, so capturing the first occurrence is often correct \n            # or we append if broken into tags.\n            self.in_description = True\n\n        # Dates: Creation and Update\n        # \"Размещено X назад\" is usually in `apartment-info__sub-line_extended-bottom_condensed`\n        # \"Последний раз редактировалось\" is followed by <span id=\"apartment-updated-at\">\n        if tag == 'div' and 'apartment-info__sub-line_extended-bottom_condensed' in classes:\n            self.in_creation_date = True # Tentative, check content\n        \n        if tag == 'span' and attrs_dict.get('id') == 'apartment-updated-at':\n            self.in_last_update = True\n\n        # Phone\n        # Inside <ul class=\"apartment-info__list_phones\"> ... <a href=\"tel:...\">\n        if tag == 'ul' and 'apartment-info__list_phones' in classes:\n            self.in_phone_list = True\n        \n        if self.in_phone_list and tag == 'a':\n             if 'href' in attrs_dict and attrs_dict['href'].startswith('tel:'):\n                 self.capture_phone = True\n\n    def handle_endtag(self, tag):\n        if tag == 'div':\n            self.in_address = False\n            self.in_description = False\n            self.in_creation_date = False\n            # We don't turn off in_price immediately on div, it's a span usually\n        \n        if tag == 'span':\n            self.in_price = False\n            self.in_last_update = False\n        \n        if tag == 'ul' and self.in_phone_list:\n            self.in_phone_list = False\n        \n        if tag == 'a' and self.capture_phone:\n            self.capture_phone = False\n\n    def handle_data(self, data):\n        text = data.strip()\n        if not text:\n            return\n\n        if self.in_address:\n            self.data['address'] = text\n        \n        if self.in_price:\n            self.data['price'] = text\n        \n        if self.in_description:\n            # If description already has data, append (e.g. <br> tags separation)\n            if self.data['description']:\n                self.data['description'] += \"<br>\\n\" + text\n            else:\n                self.data['description'] = text\n\n        if self.in_creation_date:\n            if \"Размещено\" in text:\n                self.data['creation_date'] = text.replace(\"Размещено\", \"\").strip()\n\n        if self.in_last_update:\n            self.data['last_update'] = text\n\n        if self.capture_phone:\n            self.phones_found.append(text)\n\n    def finalize(self):\n        if self.phones_found:\n            self.data['phone'] = \" \".join(self.phones_found)\n        else:\n            self.data['phone'] = None\n\n\nparser = OnlinerApartmentParser()\nparser.feed(_items[0]['json']['data'])\nparser.finalize()\n\nreturn parser.data"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2912,
+        480
+      ],
+      "id": "93468e1c-4d99-441d-bdc4-51f055c1430c",
+      "name": "Parse apart from onliner.by"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Loop over aparts list').item.json.host }}",
+                    "rightValue": "onliner.by",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "d4218edc-1636-4fda-b650-c65598d5f077"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "c7e65ec8-17c9-42a4-a713-62f69af27f0b",
+                    "leftValue": "={{ $('Loop over aparts list').item.json.host }}",
+                    "rightValue": "neagent.by",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        2464,
+        576
+      ],
+      "id": "6e9220b0-f167-4955-92b5-97033789af6c",
+      "name": "Choose parser according domain"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2240,
+        656
+      ],
+      "id": "5a475056-ec98-4510-a901-777951b233f3",
+      "name": "Loop over aparts list"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "7183f6e4-355a-45e6-9cb9-e61706e91383",
+              "leftValue": "={{ $('Extract list of aparts').item.json.update_time }}",
+              "rightValue": "={{ $now.minus(24, 'hours') }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "after"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        1792,
+        656
+      ],
+      "id": "d333f557-17ef-425a-9544-739179e461e3",
+      "name": "Filter aparts for the last 24 hours"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "apartments",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1568,
+        656
+      ],
+      "id": "23119e4d-c2c4-41dd-8390-af2a128767b6",
+      "name": "Extract list of aparts"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.APART_TELEGRAM_CHAT_ID }}",
+        "text": "=Found {{ $('Concatenate aparts lists from all sites').item.json.total_apartments }} apartments at {{ $('Concatenate aparts lists from all sites').item.json.source }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "disable_notification": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1568,
+        464
+      ],
+      "id": "f2625778-4183-4671-ba17-cec17a8a72a0",
+      "name": "Send statistic for each site",
+      "webhookId": "ac41d86f-da20-4b7a-b8ef-c14f730b07bb",
+      "credentials": {
+        "telegramApi": {
+          "id": "4QrKerBSFNBAsQoo",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "KVt6hvkrhW9TUpXr",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/KVt6hvkrhW9TUpXr",
+          "cachedResultName": "Antiflapping"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "host": "onliner.by",
+            "passphrase": "Переход в объявление",
+            "body": "={{ $('Get aparts list from onliner.by').item.json.body }}"
+          },
+          "matchingColumns": [
+            "host"
+          ],
+          "schema": [
+            {
+              "id": "host",
+              "displayName": "host",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "passphrase",
+              "displayName": "passphrase",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "body",
+              "displayName": "body",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        448,
+        464
+      ],
+      "name": "Call Antiflapping for onliner.by",
+      "id": "20466d46-dd9e-4e87-807c-00df0f31dc7e"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "KVt6hvkrhW9TUpXr",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/KVt6hvkrhW9TUpXr",
+          "cachedResultName": "Antiflapping"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "host": "neagent.by",
+            "passphrase": "Узнать больше",
+            "body": "={{ $('Get aparts list from neagent.by').item.json.data }}"
+          },
+          "matchingColumns": [
+            "host"
+          ],
+          "schema": [
+            {
+              "id": "host",
+              "displayName": "host",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "passphrase",
+              "displayName": "passphrase",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "body",
+              "displayName": "body",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        448,
+        656
+      ],
+      "name": "Call Antiflapping for neagent.by",
+      "id": "deb69b09-f465-41bf-9e14-c8c96f6a000d"
+    },
+    {
+      "parameters": {
+        "operation": "deleteRows",
+        "dataTableId": {
+          "__rl": true,
+          "value": "iAwaa0xgcxDYOvoH",
+          "mode": "list",
+          "cachedResultName": "apart",
+          "cachedResultUrl": "/projects/FIPGb9t2kll3gyD4/datatables/iAwaa0xgcxDYOvoH"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "createdAt",
+              "condition": "lt",
+              "keyValue": "={{ $now.minus(25, 'hours') }}"
+            },
+            {
+              "keyName": "disableNotifications",
+              "condition": "isFalse"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        224,
+        224
+      ],
+      "id": "fd770906-2332-4c57-9ed0-0de27f868699",
+      "name": "Cleanup data table",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "operation": "rowNotExists",
+        "dataTableId": {
+          "__rl": true,
+          "value": "iAwaa0xgcxDYOvoH",
+          "mode": "list",
+          "cachedResultName": "apart",
+          "cachedResultUrl": "/projects/FIPGb9t2kll3gyD4/datatables/iAwaa0xgcxDYOvoH"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "ap_id",
+              "keyValue": "={{ $('Filter aparts for the last 24 hours').item.json.id }}"
+            },
+            {
+              "keyName": "host",
+              "keyValue": "={{ $('Filter aparts for the last 24 hours').item.json.host }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        2016,
+        656
+      ],
+      "id": "35211e1a-34eb-42ba-8cbd-dde2b5cc2502",
+      "name": "Discard aparts which already parsed"
+    },
+    {
+      "parameters": {
+        "url": "https://r.onliner.by/ak/?price%5Bmin%5D=50&price%5Bmax%5D=130&currency=usd&only_owner=true#bounds%5Blb%5D%5Blat%5D=53.64056725131206&bounds%5Blb%5D%5Blong%5D=27.124557495117188&bounds%5Brt%5D%5Blat%5D=54.151577906757886&bounds%5Brt%5D%5Blong%5D=27.998657226562504",
+        "options": {
+          "browserWSEndpoint": "={{ $env.BROWSERLESS_CONNECTION_STRING }}",
+          "timeout": 120000,
+          "waitUntil": "networkidle0"
+        }
+      },
+      "type": "n8n-nodes-puppeteer.puppeteer",
+      "typeVersion": 1,
+      "position": [
+        224,
+        464
+      ],
+      "id": "ab9eccff-a26a-443f-8440-0ca144ef6ead",
+      "name": "Get aparts list from onliner.by",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "maxTries": 2,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "https://neagent.by/komnata/snyat?hasPhotos=1",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true
+            }
+          },
+          "timeout": 120000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        224,
+        656
+      ],
+      "id": "c55e6c33-9936-4a16-be70-36aa1d7622cc",
+      "name": "Get aparts list from neagent.by",
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 5000,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "language": "pythonNative",
+        "pythonCode": "# A bug in the Python Code node prevents it from accessing data from nodes further than one step back. Please ensure the 'host' and 'body' fields are transferred from the node immediately preceding this one.\n\n# Generated by AI\nimport json\nimport re\nfrom html.parser import HTMLParser\nfrom datetime import datetime\n\nclass ApartmentParser(HTMLParser):\n    def __init__(self):\n        super().__init__()\n        self.apartments = []\n        self.current_apartment = {}\n        self.in_classified = False\n        self.in_link = False\n        self.capture_href = False\n        self.capture_time = False\n        self.current_time_text = \"\"\n    \n    def handle_starttag(self, tag, attrs):\n        attrs_dict = dict(attrs)\n        \n        # Check if this is an apartment listing\n        if tag == 'a' and 'class' in attrs_dict and 'classified' in attrs_dict['class']:\n            self.in_classified = True\n            self.in_link = True\n            \n            # Extract the link\n            if 'href' in attrs_dict:\n                self.current_apartment['link'] = attrs_dict['href']\n            \n            # Extract the data-id\n            if 'data-id' in attrs_dict:\n                self.current_apartment['id'] = attrs_dict['data-id']\n        \n        # Look for time element in apartment listing\n        if self.in_classified and tag == 'span' and 'class' in attrs_dict:\n            if 'classified__time' in attrs_dict['class']:\n                self.capture_time = True\n                self.current_time_text = \"\"\n    \n    def handle_endtag(self, tag):\n        if tag == 'a' and self.in_link:\n            self.in_link = False\n            if self.current_apartment:\n                # If we have both link and time, add to list\n                if 'link' in self.current_apartment and 'time_text' in self.current_apartment:\n                    self.apartments.append(self.current_apartment.copy())\n                self.current_apartment = {}\n        \n        if tag == 'span' and self.capture_time:\n            self.capture_time = False\n            if self.current_time_text and self.in_classified:\n                self.current_apartment['time_text'] = self.current_time_text.strip()\n                self.current_time_text = \"\"\n    \n    def handle_data(self, data):\n        if self.capture_time:\n            self.current_time_text += data\n\ndef extract_apartment_info(html_content):\n    \"\"\"Extract apartment links and update dates from HTML content\"\"\"\n    \n    # Initialize parser\n    parser = ApartmentParser()\n    parser.feed(html_content)\n    \n    # Process the extracted data\n    results = []\n    \n    for apt in parser.apartments:\n        # Extract and clean time information\n        time_text = apt.get('time_text', '')\n        \n        # Parse relative time to standardized format\n        update_time = parse_relative_time(time_text)\n      \n        item_id = apt.get('id')\n        if not re.match(r'^\\d+$', item_id):\n            raise ValueError(f\"ID '{item_id}' does not match pattern '^\\d+$'\")\n        \n        apartment_info = {\n            'id': apt.get('id'),\n            'link': apt.get('link', ''),\n            'time_text': time_text,\n            'update_time': update_time,\n            'host': _items[0][\"json\"][\"host\"],\n        }\n        \n        results.append(apartment_info)\n    \n    return results\n\ndef parse_relative_time(time_text):\n    \"\"\"Parse relative time strings to standardized format\"\"\"\n    \n    if not time_text:\n        return \"\"\n    \n    time_text = time_text.lower().strip()\n    now = datetime.now()\n    timezone = 3 * 3600\n    #print(now.timestamp())\n    \n    # Handle minutes\n    if time_text == \"минуту назад\":\n        minutes = 1\n        delta = now.timestamp() - (minutes * 60) + timezone\n        return datetime.fromtimestamp(delta).strftime('%Y-%m-%d %H:%M:%S')\n    else:\n        minutes_match = re.search(r'(\\d+)\\s*(минут|мин)', time_text)\n        if minutes_match:\n            minutes = int(minutes_match.group(1))\n            delta = now.timestamp() - (minutes * 60) + timezone\n            return datetime.fromtimestamp(delta).strftime('%Y-%m-%d %H:%M:%S')\n    \n    # Handle hours\n    if time_text == \"час назад\":\n        hours = 1\n        delta = now.timestamp() - (hours * 3600) + timezone\n        return datetime.fromtimestamp(delta).strftime('%Y-%m-%d %H:%M:%S')\n    else:\n        hours_match = re.search(r'(\\d+)\\s*(час|ч)', time_text)\n        if hours_match:\n            hours = int(hours_match.group(1))\n            delta = now.timestamp() - (hours * 3600) + timezone\n            return datetime.fromtimestamp(delta).strftime('%Y-%m-%d %H:%M:%S')\n    \n    # Handle days\n    if time_text == \"день назад\":\n        days = 1\n        delta = now.timestamp() - (days * 86400) + timezone\n        return datetime.fromtimestamp(delta).strftime('%Y-%m-%d %H:%M:%S')\n    else:\n        days_match = re.search(r'(\\d+)\\s*(день|дн|дня|дней)', time_text)\n        if days_match:\n          days = int(days_match.group(1))\n          delta = now.timestamp() - (days * 86400) + timezone\n          return datetime.fromtimestamp(delta).strftime('%Y-%m-%d %H:%M:%S')\n    \n    # Handle \"сегодня\" (today)\n    if 'сегодня' in time_text:\n        return now.strftime('%Y-%m-%d')\n    \n    # Handle \"вчера\" (yesterday)\n    if 'вчера' in time_text:\n        delta = now.timestamp() - 86400 + timezone\n        return datetime.fromtimestamp(delta).strftime('%Y-%m-%d')\n\n    if 'месяц' in time_text:\n        delta = now.timestamp() - 86400 * 30 + timezone\n        return datetime.fromtimestamp(delta).strftime('%Y-%m-%d')\n    \n    # If we can't parse it, return the original text\n    return time_text\n\n\nhtml_content = _items[0]['json']['body']\napartments = extract_apartment_info(html_content)\noutput = {\n    \"source\": \"https://r.onliner.by/ak/\",\n    \"extraction_date\": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),\n    \"total_apartments\": len(apartments),\n    \"apartments\": apartments\n}\n\nreturn output"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        896,
+        464
+      ],
+      "id": "e113d062-2d6a-4b3b-bec9-94782513cb7e",
+      "name": "Parse aparts list from onliner.by"
+    },
+    {
+      "parameters": {
+        "language": "pythonNative",
+        "pythonCode": "# A bug in the Python Code node prevents it from accessing data from nodes further than one step back. Please ensure the 'host' and 'body' fields are transferred from the node immediately preceding this one.\n\n# Generated by AI\nimport json\nfrom html.parser import HTMLParser\nfrom datetime import datetime, timedelta\nimport re\n\n# --- Configuration ---\n# In n8n, use the current execution time\nCURRENT_NOW = datetime.now()\n# For testing consistency with the prompt context (Saturday, Jan 3, 2026)\n# You can comment this out in production to use real time\n# CURRENT_NOW = datetime(2026, 1, 3, 9, 16, 0) \n\n# --- Input Handling ---\ntry:\n    # n8n specific access to input data\n    html_content = _items[0][\"json\"][\"body\"]\nexcept (NameError, IndexError, AttributeError):\n    html_content = \"\"\n\ndef parse_date(date_text):\n    \"\"\"\n    Parses various date formats found on the site.\n    Returns ISO format string or None.\n    \"\"\"\n    if not date_text:\n        return None\n        \n    date_text = date_text.strip().lower()\n    \n    # 1. Standard Date: \"2025-12-14 11:55\"\n    iso_match = re.search(r'(\\d{4}-\\d{2}-\\d{2})\\s+(\\d{2}:\\d{2})', date_text)\n    if iso_match:\n        # Add seconds to make it full ISO format\n        return f\"{iso_match.group(1)} {iso_match.group(2)}:00\"\n\n    # 2. Relative Date: \"сегодня в 14:30\", \"вчера в 09:15\"\n    # Extract time portion\n    time_match = re.search(r'(\\d{1,2}:\\d{2})', date_text)\n    if time_match:\n        time_str = time_match.group(1)\n        target_date = CURRENT_NOW.date()\n        \n        if 'вчера' in date_text:\n            target_date = target_date - timedelta(days=1)\n        # 'сегодня' is the default target_date\n        \n        return f\"{target_date} {time_str}:00\"\n        \n    # 3. Just \"Сегодня\" or \"Вчера\" without time (fallback to 00:00 or current time)\n    if 'сегодня' in date_text:\n        return CURRENT_NOW.strftime('%Y-%m-%d %H:%M:%S')\n    if 'вчера' in date_text:\n        yesterday = CURRENT_NOW - timedelta(days=1)\n        return yesterday.strftime('%Y-%m-%d %H:%M:%S')\n\n    return None\n\nclass NeagentParser(HTMLParser):\n    def __init__(self):\n        super().__init__()\n        self.apartments = []\n        self.current_item = None\n        self.in_card = False\n        self.in_date_span = False\n        self.temp_date_text = \"\"\n\n    def handle_starttag(self, tag, attrs):\n        attrs_dict = dict(attrs)\n        classes = attrs_dict.get('class', '').split()\n\n        # Detect Card Start\n        if tag == 'div' and 'c-card' in classes:\n            # Check if we were already in a card (structure safety)\n            if self.in_card:\n                self.finalize_current_item()\n            \n            item_id = attrs_dict.get('id', '')\n            if not re.match(r'^\\d+$', item_id[1:]):\n                raise ValueError(f\"ID '{item_id}' does not match pattern '^\\d+$'\")\n            if item_id.startswith('n'):\n                self.in_card = True\n                self.current_item = {\n                    'id': item_id[1:], # Remove 'n' prefix\n                    'link': '',\n                    'time_text': '',\n                    'update_time': None,\n                    'host': _items[0][\"json\"][\"host\"],\n                }\n\n        # Inside Card Logic\n        if self.in_card and self.current_item is not None:\n            # Extract Link\n            if tag == 'a' and 'c-card__title' in classes:\n                href = attrs_dict.get('href', '')\n                # Fix relative URLs\n                if href.startswith('//'):\n                    href = 'https:' + href\n                elif href.startswith('/'):\n                    href = 'https://neagent.by' + href\n                self.current_item['link'] = href\n\n            # Start Date Capture\n            if tag == 'span' and 'date' in classes:\n                self.in_date_span = True\n                self.temp_date_text = \"\"\n\n    def handle_data(self, data):\n        if self.in_date_span:\n            self.temp_date_text += data\n\n    def handle_endtag(self, tag):\n        if self.in_date_span and tag == 'span':\n            # Process Date Text\n            raw_text = self.temp_date_text.strip()\n            # Clean junk text like \"собственник\" or \"агент\"\n            clean_text = raw_text.split('собственник')[0].split('агент')[0].strip()\n            \n            if self.current_item is not None:\n                if clean_text:\n                    self.current_item['time_text'] = clean_text\n                    self.current_item['update_time'] = parse_date(clean_text)\n                else:\n                    # Fix for empty date (e.g. First Item/Highlighted ads)\n                    # If date text is missing but card exists, imply \"Now\"\n                    self.current_item['time_text'] = \"Сейчас\"\n                    self.current_item['update_time'] = CURRENT_NOW.strftime('%Y-%m-%d %H:%M:%S')\n\n            self.in_date_span = False\n        \n        # Determine Card End\n        # Since 'c-card' divs are nested or adjacent, we rely on the start of the next card \n        # or the end of the input to finalize. However, if we hit the end of the container \n        # listing-container, we might close it. \n        # For simplicity in this flat structure, we don't strictly close on </div> \n        # because counting div depth is error-prone without a robust stack.\n\n    def finalize_current_item(self):\n        if self.current_item:\n            # Validation: Filter out items without a link\n            # This handles \"Moved\" or \"Ad Removed\" blocks that have an ID but no title link\n            if self.current_item.get('link'):\n                self.apartments.append(self.current_item)\n            \n            self.current_item = None\n            self.in_card = False\n\n# --- Execution ---\n\n\nparser = NeagentParser()\nparser.feed(html_content)\n# Ensure the very last item is processed\nparser.finalize_current_item()\n\n# Format Output\noutput = {\n    \"source\": \"https://neagent.by/komnata/snyat?hasPhotos=1\",\n    \"extraction_date\": CURRENT_NOW.strftime('%Y-%m-%d %H:%M:%S'),\n    \"total_apartments\": len(parser.apartments),\n    \"apartments\": parser.apartments\n}\n\nreturn output"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        896,
+        656
+      ],
+      "id": "9f960e41-5407-44bf-af6a-945702e6b6a2",
+      "name": "Parse aparts list from neagent.by"
+    },
+    {
+      "parameters": {
+        "resource": "callback",
+        "queryId": "={{ $('Buttons listener').item.json.callback_query.id }}",
+        "additionalFields": {
+          "show_alert": false,
+          "text": "=Notifications for {{ $('Disable notifications for apart in data table').item.json.link }} is disabled."
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        672,
+        0
+      ],
+      "id": "fefeff2f-0306-4dec-adbb-278dcde4fffa",
+      "name": "Send feedback to user after click button",
+      "webhookId": "eba5be42-95dd-4a0e-aad9-347f358f27e1",
+      "credentials": {
+        "telegramApi": {
+          "id": "4QrKerBSFNBAsQoo",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1120,
+        560
+      ],
+      "id": "19252800-059e-440c-b879-d9f3e81bd93b",
+      "name": "Concatenate aparts lists from all sites"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "emAH8sKRnUMN8aF3",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/emAH8sKRnUMN8aF3",
+          "cachedResultName": "Login&Click"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "phone_button_selector": ".ad_phone",
+            "phone_form_selector": ".cphone",
+            "link": "={{ $('Loop over aparts list').item.json.link }}",
+            "password_form_selector": "#password",
+            "success_login_selector": ".logo_subtext",
+            "login_button_selector": "#middle > form > div.form_button_wrapper > input[type=submit]",
+            "login_form_selector": "#login",
+            "login_cookie_name": "autologin",
+            "login_url": "https://neagent.by/auth/login",
+            "host": "={{ $('Loop over aparts list').item.json.host }}"
+          },
+          "matchingColumns": [
+            "phone_button_selector",
+            "phone_form_selector",
+            "link",
+            "host",
+            "password_form_selector",
+            "success_login_selector",
+            "login_button_selector",
+            "login_form_selector",
+            "login_cookie_name",
+            "login_url"
+          ],
+          "schema": [
+            {
+              "id": "phone_button_selector",
+              "displayName": "phone_button_selector",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "phone_form_selector",
+              "displayName": "phone_form_selector",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "link",
+              "displayName": "link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "password_form_selector",
+              "displayName": "password_form_selector",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "success_login_selector",
+              "displayName": "success_login_selector",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "login_button_selector",
+              "displayName": "login_button_selector",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "login_form_selector",
+              "displayName": "login_form_selector",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "login_cookie_name",
+              "displayName": "login_cookie_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "login_url",
+              "displayName": "login_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "host",
+              "displayName": "host",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        2688,
+        672
+      ],
+      "name": "Call Login&Click for neagent.by",
+      "id": "9e621859-6b27-49af-ad51-794785b5c448"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5a012408-dd6a-4b64-8d37-048ec92d9079",
+              "name": "phones",
+              "value": "={{ JSON.stringify($('Hide apart with specific keywords').item.json.phone.split(/\\s+(?=\\+)/).map(phone => ({ phone }))) }}\n\n",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3360,
+        320
+      ],
+      "id": "c6b42359-ad31-45d7-ac79-7e1cf5f24af3",
+      "name": "Create phones array"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "phones",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        3584,
+        320
+      ],
+      "id": "4430f559-b7cf-43de-9188-2368516fda18",
+      "name": "Split phones array into items"
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "phone"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1.1,
+      "position": [
+        4032,
+        320
+      ],
+      "id": "344d81f0-7748-4fa7-abc0-5b1c958ab465",
+      "name": "Count of listings with this phone"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "17c66fd5-1cc5-4a50-9221-9b2d280eb65d",
+              "leftValue": "={{ $('Count of listings with this phone').item.json.count_phone }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        4480,
+        272
+      ],
+      "id": "8a010344-15bf-4e16-9f11-83cd9eac47fc",
+      "name": "Check if necessary to send warning "
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.description }}",
+                    "rightValue": "/девуш|женщин/i",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    },
+                    "id": "b080cb06-08d2-4b8f-a4bc-ab5aec85b4ee"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "38ff44f6-8f74-4403-be01-0165f766a921",
+                    "leftValue": "={{ $json.phone }}",
+                    "rightValue": "=/^Будет доступен|^\\+375 XX XXX-XX-XX/",
+                    "operator": {
+                      "type": "string",
+                      "operation": "regex"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "98573ba4-6d06-462a-87a5-32f30067361c",
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        3136,
+        560
+      ],
+      "id": "f3ecc51b-8fbb-4968-9fdb-489dc325eb58",
+      "name": "Hide apart with specific keywords",
+      "notes": "This node filters listings using specific keywords to minimize information overload. As an example, the site neagent.by delays the visibility of phone numbers for free users by one hour."
+    },
+    {
+      "parameters": {
+        "language": "pythonNative",
+        "pythonCode": "# Generated by AI\nimport json\nfrom html.parser import HTMLParser\nimport re\n#import sys\n\nclass NeagentParser(HTMLParser):\n    def __init__(self):\n        super().__init__()\n        self.data = {\n            \"cover_url\": None,\n            \"address\": \"\",\n            \"last_update\": None,\n            \"creation_date\": None,\n            \"description\": \"\",\n            \"price\": None,\n            \"phone\": None\n        }\n        \n        # --- State Tracking ---\n        \n        # Address\n        self.in_addr_block = False\n        self.addr_div_depth = 0\n        self.raw_address_parts = []\n        self.main_address_captured = False\n\n        # H1 Fallback\n        self.in_h1 = False\n        self.h1_text = \"\"\n\n        # Description\n        self.in_text_content = False\n        self.desc_div_depth = 0\n        self.ignore_desc = False\n        self.description_parts = []\n\n        # Key-Value Pairs (Dates)\n        self.in_kv_row = False\n        self.kv_div_depth = 0\n        self.in_key = False\n        self.in_val = False\n        self.temp_key_text = \"\"\n        self.temp_val_text = \"\"\n        self.current_target_field = None\n        self.creation_captured = False\n        self.update_captured = False\n\n        # Price\n        self.in_price = False\n        self.price_captured = False\n\n        # Phone\n        self.in_phone_container = False # general container .ad_phone\n        self.in_cphone = False # specific valid number container .cphone\n        self.temp_phone = None\n\n    def handle_starttag(self, tag, attrs):\n        attrs_dict = dict(attrs)\n        classes = attrs_dict.get('class', '').split()\n\n        # 1. Link\n        if tag == 'link' and attrs_dict.get('rel') == 'canonical':\n            self.data['link'] = attrs_dict.get('href')\n\n        # 2. Cover URL\n        if tag == 'img' and 'simple-gallery-main-item' in classes:\n            if not self.data['cover_url']:\n                src = attrs_dict.get('src')\n                if src:\n                    if src.startswith('//'):\n                        self.data['cover_url'] = 'https:' + src\n                    elif src.startswith('/'):\n                        self.data['cover_url'] = 'https://neagent.by' + src\n                    else:\n                        self.data['cover_url'] = src\n\n        # 3. Address\n        if tag == 'div' and 'c-card__addr' in classes and not self.main_address_captured:\n            self.in_addr_block = True\n            self.addr_div_depth = 0 \n            self.raw_address_parts = [] \n        elif self.in_addr_block and tag == 'div':\n            self.addr_div_depth += 1\n\n        # 3b. H1 Fallback\n        if tag == 'h1':\n            self.in_h1 = True\n\n        # 4. Description\n        if tag == 'div' and 'text-content' in classes:\n            self.in_text_content = True\n            self.desc_div_depth = 0\n        elif self.in_text_content and tag == 'div':\n            self.desc_div_depth += 1\n            if 'collapsing_header' in classes:\n                self.ignore_desc = True\n\n        # 5. Key-Value Rows (Dates)\n        if tag == 'div' and 'key-value-item' in classes:\n            self.in_kv_row = True\n            self.kv_div_depth = 0\n            self.current_target_field = None\n            self.temp_val_text = \"\"\n        elif self.in_kv_row and tag == 'div':\n            self.kv_div_depth += 1\n            if 'key' in classes:\n                self.in_key = True\n                self.temp_key_text = \"\"\n            elif 'value' in classes:\n                self.in_val = True\n                self.temp_val_text = \"\"\n\n        # 6. Price\n        if tag == 'span' and 'ann-contact__price' in classes and not self.price_captured:\n            self.in_price = True\n\n        # 7. Phone\n        # Check for specific class 'cphone' which contains the real number\n        if 'cphone' in classes:\n            self.in_cphone = True\n        # Fallback: check for 'ad_phone' container if we haven't found a cphone yet\n        elif 'ad_phone' in classes:\n            self.in_phone_container = True\n\n    def handle_endtag(self, tag):\n        # Address End\n        if self.in_addr_block and tag == 'div':\n            if self.addr_div_depth == 0:\n                self.in_addr_block = False\n                self.main_address_captured = True\n            else:\n                self.addr_div_depth -= 1\n\n        # H1 End\n        if self.in_h1 and tag == 'h1':\n            self.in_h1 = False\n\n        # Description End\n        if self.in_text_content and tag == 'div':\n            if self.desc_div_depth == 0:\n                self.in_text_content = False\n            else:\n                self.desc_div_depth -= 1\n        \n        # Key-Value End\n        if self.in_kv_row and tag == 'div':\n            if self.in_key:\n                self.in_key = False\n                key_text = self.temp_key_text.lower()\n                if \"дата добавления\" in key_text or \"создано\" in key_text:\n                    if not self.creation_captured:\n                        self.current_target_field = \"creation_date\"\n                elif \"обновлено\" in key_text or \"дата изменения\" in key_text:\n                    if not self.update_captured:\n                        self.current_target_field = \"last_update\"\n            \n            elif self.in_val:\n                self.in_val = False\n                if self.current_target_field:\n                    clean_val = self.temp_val_text.strip()\n                    if clean_val:\n                        self.data[self.current_target_field] = clean_val\n                        if self.current_target_field == \"creation_date\":\n                            self.creation_captured = True\n                        elif self.current_target_field == \"last_update\":\n                            self.update_captured = True\n\n            if self.kv_div_depth == 0:\n                self.in_kv_row = False\n            else:\n                self.kv_div_depth -= 1\n\n        # Price End\n        if self.in_price and tag == 'span':\n            self.in_price = False\n            self.price_captured = True\n\n        # Phone End\n        if self.in_cphone and tag == 'div':\n            self.in_cphone = False\n        if self.in_phone_container and tag == 'span': # ad_phone is a span\n            self.in_phone_container = False\n\n    def handle_data(self, data):\n        content = data.strip()\n        if not content:\n            return\n\n        # Address\n        if self.in_addr_block:\n            self.raw_address_parts.append(content)\n\n        # H1\n        if self.in_h1:\n            self.h1_text += data\n\n        # Description\n        if self.in_text_content and not self.ignore_desc:\n            self.description_parts.append(content)\n\n        # KV Data\n        if self.in_key:\n            self.temp_key_text += data\n        if self.in_val:\n            self.temp_val_text += data\n\n        # Price\n        if self.in_price:\n            self.data['price'] = content\n\n        # Phone\n        if self.in_cphone:\n            # High priority: Found a cphone div, which usually contains the real number\n            self.data['phone'] = content\n        elif self.in_phone_container:\n            # Low priority: inside ad_phone block. \n            # Only save if we don't have a phone yet, or if current phone is masked (\"XX\")\n            is_masked = 'XX' in content\n            current_phone = self.data.get('phone')\n            \n            if not current_phone:\n                # Capture whatever we find if we have nothing\n                self.data['phone'] = content\n            elif 'XX' in current_phone and not is_masked:\n                 # Upgrade from masked to unmasked if possible (unlikely in this order but safe)\n                 self.data['phone'] = content\n\n    def get_json(self):\n        # 1. Process Address\n        final_addr = \"\"\n        if self.raw_address_parts:\n            clean_parts = []\n            for part in self.raw_address_parts:\n                cleaned = part.strip(',. ')\n                if cleaned and cleaned.lower() != 'минск':\n                    clean_parts.append(cleaned)\n            final_addr = \", \".join(clean_parts)\n        \n        # Fallback Address\n        if not final_addr and self.h1_text:\n            text = self.h1_text.strip()\n            text = text.replace(\"Снять комнату в Минске,\", \"\").replace(\"Снять комнату,\", \"\").strip()\n            text = re.sub(r'(,\\s*)?[\\d\\s]+(бел\\.?)?\\s*руб.*$', '', text, flags=re.IGNORECASE)\n            text = re.sub(r'по цене.*$', '', text, flags=re.IGNORECASE)\n            final_addr = text.strip(', ')\n\n        self.data['address'] = final_addr\n        \n        # 2. Process Description\n        self.data['description'] = \" \".join(self.description_parts).strip()\n\n        return self.data\n\n# --- Execution Block ---\n\n\nparser = NeagentParser()\nparser.feed(_items[0]['json']['data'])\n\nreturn parser.get_json()"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2912,
+        672
+      ],
+      "id": "f1e83624-e1b4-4aaf-b83b-41aedb3e3049",
+      "name": "Parse apart from neagent.by"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 6,
+              "triggerAtMinute": 3
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        704
+      ],
+      "id": "53dcf28c-7064-4258-afb5-52d528f7b3f1",
+      "name": "Run heartbeat"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        368
+      ],
+      "id": "34316717-80c7-47de-8288-2807e61edf2b",
+      "name": "Run every 5 minutes"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "5134d16e-531c-44d4-aac9-403cb36c4650",
+              "leftValue": "={{ $('Run heartbeat').isExecuted }}",
+              "rightValue": 6,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1344,
+        560
+      ],
+      "id": "50d05f7f-e055-4180-a0e6-a2897ae583e0",
+      "name": "Check if necessary to send heartbeat"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Call Antiflapping for onliner.by').item.json.is_passphrase_passed }}",
+                    "rightValue": "Переход в объявление",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    },
+                    "id": "d4218edc-1636-4fda-b650-c65598d5f077"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "f471b0a4-7c42-4e59-915f-793071769ba3",
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        672,
+        464
+      ],
+      "id": "d35162b5-0e02-4485-8062-b94455ea8eeb",
+      "name": "Check passphrase for onliner.by"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Call Antiflapping for neagent.by').item.json.is_passphrase_passed }}",
+                    "rightValue": "Переход в объявление",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    },
+                    "id": "d4218edc-1636-4fda-b650-c65598d5f077"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "7edd4a42-0e34-4486-862d-75a15685c516",
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        672,
+        656
+      ],
+      "id": "4c9dea62-6b36-4936-8241-89b51a038991",
+      "name": "Check passphrase for neagent.by"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "iAwaa0xgcxDYOvoH",
+          "mode": "list",
+          "cachedResultName": "apart",
+          "cachedResultUrl": "/projects/FIPGb9t2kll3gyD4/datatables/iAwaa0xgcxDYOvoH"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "phone",
+              "condition": "ilike",
+              "keyValue": "={{ $('Split phones array into items').item.json.phone }}"
+            },
+            {
+              "keyName": "host",
+              "keyValue": "={{ $('Loop over aparts list').item.json.host }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        3808,
+        320
+      ],
+      "id": "c845c01e-5348-41e3-8071-90086fcc3af3",
+      "name": "Check if phone already exists in data table",
+      "alwaysOutputData": true
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Choose button": {
+      "main": [
+        [
+          {
+            "node": "Disable notifications for apart in data table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Disable notifications for apart in data table": {
+      "main": [
+        [
+          {
+            "node": "Send feedback to user after click button",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buttons listener": {
+      "main": [
+        [
+          {
+            "node": "Choose button",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Timeout for avoid ban": {
+      "main": [
+        [
+          {
+            "node": "Loop over aparts list",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add apart to data table": {
+      "main": [
+        [
+          {
+            "node": "Timeout for avoid ban",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send apart to user": {
+      "main": [
+        [
+          {
+            "node": "Check if necessary to send warning ",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Add apart to data table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get apart from onliner.by": {
+      "main": [
+        [
+          {
+            "node": "Parse apart from onliner.by",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse apart from onliner.by": {
+      "main": [
+        [
+          {
+            "node": "Hide apart with specific keywords",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Choose parser according domain": {
+      "main": [
+        [
+          {
+            "node": "Get apart from onliner.by",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Call Login&Click for neagent.by",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop over aparts list": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Choose parser according domain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter aparts for the last 24 hours": {
+      "main": [
+        [
+          {
+            "node": "Discard aparts which already parsed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract list of aparts": {
+      "main": [
+        [
+          {
+            "node": "Filter aparts for the last 24 hours",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Discard aparts which already parsed": {
+      "main": [
+        [
+          {
+            "node": "Loop over aparts list",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get aparts list from onliner.by": {
+      "main": [
+        [
+          {
+            "node": "Call Antiflapping for onliner.by",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get aparts list from neagent.by": {
+      "main": [
+        [
+          {
+            "node": "Call Antiflapping for neagent.by",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse aparts list from onliner.by": {
+      "main": [
+        [
+          {
+            "node": "Concatenate aparts lists from all sites",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse aparts list from neagent.by": {
+      "main": [
+        [
+          {
+            "node": "Concatenate aparts lists from all sites",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Concatenate aparts lists from all sites": {
+      "main": [
+        [
+          {
+            "node": "Check if necessary to send heartbeat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call Login&Click for neagent.by": {
+      "main": [
+        [
+          {
+            "node": "Parse apart from neagent.by",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create phones array": {
+      "main": [
+        [
+          {
+            "node": "Split phones array into items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split phones array into items": {
+      "main": [
+        [
+          {
+            "node": "Check if phone already exists in data table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Count of listings with this phone": {
+      "main": [
+        [
+          {
+            "node": "Send apart to user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check if necessary to send warning ": {
+      "main": [
+        [
+          {
+            "node": "Send warning about real estate agency",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hide apart with specific keywords": {
+      "main": [
+        [
+          {
+            "node": "Add apart to data table",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Timeout for avoid ban",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create phones array",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse apart from neagent.by": {
+      "main": [
+        [
+          {
+            "node": "Hide apart with specific keywords",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run heartbeat": {
+      "main": [
+        [
+          {
+            "node": "Get aparts list from onliner.by",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get aparts list from neagent.by",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run every 5 minutes": {
+      "main": [
+        [
+          {
+            "node": "Cleanup data table",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get aparts list from onliner.by",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get aparts list from neagent.by",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check if necessary to send heartbeat": {
+      "main": [
+        [
+          {
+            "node": "Send statistic for each site",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract list of aparts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call Antiflapping for onliner.by": {
+      "main": [
+        [
+          {
+            "node": "Check passphrase for onliner.by",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call Antiflapping for neagent.by": {
+      "main": [
+        [
+          {
+            "node": "Check passphrase for neagent.by",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check passphrase for onliner.by": {
+      "main": [
+        [
+          {
+            "node": "Parse aparts list from onliner.by",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check passphrase for neagent.by": {
+      "main": [
+        [
+          {
+            "node": "Parse aparts list from neagent.by",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check if phone already exists in data table": {
+      "main": [
+        [
+          {
+            "node": "Count of listings with this phone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionTimeout": 300,
+    "errorWorkflow": "n4q0YGy9YralQ4w7"
+  },
+  "versionId": "d11c87e0-4af0-4e11-82c2-af07f24c9fd1",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "6a4b707915e44f6a161ae3035fd83d24e83ca5a7e087ad6cba1b954eda6e2dbd"
+  },
+  "id": "A6NNUy0XmuGLUw51",
+  "tags": []
+}

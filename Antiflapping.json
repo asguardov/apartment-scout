@@ -1,0 +1,706 @@
+{
+  "name": "Antiflapping",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "host",
+              "type": "any"
+            },
+            {
+              "name": "passphrase"
+            },
+            {
+              "name": "body"
+            }
+          ]
+        }
+      },
+      "id": "31d3ee46-065e-47b7-a27e-38f0c3f7a096",
+      "typeVersion": 1.1,
+      "name": "Start",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        -1120,
+        368
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9d016b4d-be00-4b29-9e6e-68dc672b1a7c",
+              "name": "failure_field",
+              "value": "=count_of_failures_for_{{ $('Start').item.json.host }}",
+              "type": "string"
+            },
+            {
+              "id": "227cdf48-9693-4255-923e-2aff7db0d649",
+              "name": "failure_threshold",
+              "value": 3,
+              "type": "number"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -896,
+        368
+      ],
+      "id": "ced4621e-5222-4726-a144-8eb1ac3b86d2",
+      "name": "Set failure field name"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "Vyxuuo6JthkpAG2m",
+          "mode": "list",
+          "cachedResultName": "apart_misc",
+          "cachedResultUrl": "/projects/FIPGb9t2kll3gyD4/datatables/Vyxuuo6JthkpAG2m"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "common_key",
+              "keyValue": "={{ $('Set failure field name').item.json.failure_field }}"
+            }
+          ]
+        },
+        "limit": 1
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        -672,
+        368
+      ],
+      "id": "f559d6c2-32c7-48f3-aa7c-c8a324e2eaf5",
+      "name": "Get count of failures",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Start').item.json.body }}",
+                    "rightValue": "={{ $('Start').item.json.passphrase }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "d4218edc-1636-4fda-b650-c65598d5f077"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "c7e65ec8-17c9-42a4-a713-62f69af27f0b",
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -448,
+        368
+      ],
+      "id": "482b5af9-a39c-46c4-bfb3-bc7dfef661c6",
+      "name": "Check passphrase"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.APART_TELEGRAM_CHAT_ID }}",
+        "text": "=Scraper for {{ $('Start').item.json.host }} is up!\n",
+        "additionalFields": {
+          "appendAttribution": false,
+          "disable_notification": true
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "47ef7548-3dc4-40fe-b710-6c04ff9232fe",
+      "name": "Send info: Scraper is up!",
+      "webhookId": "ac41d86f-da20-4b7a-b8ef-c14f730b07bb",
+      "credentials": {
+        "telegramApi": {
+          "id": "4QrKerBSFNBAsQoo",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "Vyxuuo6JthkpAG2m",
+          "mode": "list",
+          "cachedResultName": "apart_misc",
+          "cachedResultUrl": "/projects/FIPGb9t2kll3gyD4/datatables/Vyxuuo6JthkpAG2m"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "common_key",
+              "keyValue": "={{ $('Set failure field name').item.json.failure_field }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "common_key": "={{ $('Set failure field name').item.json.failure_field }}",
+            "common_value": "0"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "common_key",
+              "displayName": "common_key",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "common_value",
+              "displayName": "common_value",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        224,
+        80
+      ],
+      "id": "699d9ad6-6626-4265-b79b-c5750ae073fb",
+      "name": "Reset counter of failures"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "Vyxuuo6JthkpAG2m",
+          "mode": "list",
+          "cachedResultName": "apart_misc",
+          "cachedResultUrl": "/projects/FIPGb9t2kll3gyD4/datatables/Vyxuuo6JthkpAG2m"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "common_key",
+              "keyValue": "={{ $('Set failure field name').item.json.failure_field }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "common_key": "={{ $('Set failure field name').item.json.failure_field }}",
+            "common_value": "={{ ((+$('Get count of failures').item.json.common_value || 0) + 1).toString() }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "common_key",
+              "displayName": "common_key",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "common_value",
+              "displayName": "common_value",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        -224,
+        480
+      ],
+      "id": "4d4aecc0-64f5-461a-a7e9-dbd6b7c7d089",
+      "name": "Increase counter of failures"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "26628eec-3fa6-43de-9eb2-32ed38bb3256",
+              "leftValue": "={{ $('Increase counter of failures').item.json.common_value }}",
+              "rightValue": "={{ $('Set failure field name').item.json.failure_threshold }}",
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        0,
+        480
+      ],
+      "id": "c68d11b0-b0ed-4292-8477-4421cece2ed8",
+      "name": "Is needed to trigger alert?"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.APART_TELEGRAM_CHAT_ID }}",
+        "text": "=Scraper for {{ $('Set failure field name').item.json.host }} is down!\n",
+        "additionalFields": {
+          "appendAttribution": false,
+          "disable_notification": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        224,
+        416
+      ],
+      "id": "4177ac14-7aa3-4acd-a815-976038edc2c2",
+      "name": "Send alert: Scraper is down!",
+      "webhookId": "ac41d86f-da20-4b7a-b8ef-c14f730b07bb",
+      "credentials": {
+        "telegramApi": {
+          "id": "4QrKerBSFNBAsQoo",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9d016b4d-be00-4b29-9e6e-68dc672b1a7c",
+              "name": "is_passphrase_passed",
+              "value": "=true",
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        448,
+        144
+      ],
+      "id": "7acef10c-cf82-4f04-be93-2b2f1fd11c03",
+      "name": "Set passphrase check to passed"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9d016b4d-be00-4b29-9e6e-68dc672b1a7c",
+              "name": "is_passphrase_passed",
+              "value": "=false",
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        448,
+        480
+      ],
+      "id": "c1e4a099-8349-4dc2-8b5e-207110d833c1",
+      "name": "Set passphrase check to failed"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "194cf345-46b3-4d92-bad0-9991cb4effc8",
+              "name": "host",
+              "value": "={{ $('Start').item.json.host }}",
+              "type": "string"
+            },
+            {
+              "id": "480f040c-6697-45f1-acdb-7b5c7227e107",
+              "name": "body",
+              "value": "={{ $('Start').item.json.body }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        672,
+        288
+      ],
+      "id": "4dbac257-3a59-49f1-a736-310cce54c0ad",
+      "name": "Generate output"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Get count of failures').item.json.common_value }}",
+                    "rightValue": "={{ $('Set failure field name').item.json.failure_threshold }}",
+                    "operator": {
+                      "type": "number",
+                      "operation": "gte"
+                    },
+                    "id": "d4218edc-1636-4fda-b650-c65598d5f077"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "c7e65ec8-17c9-42a4-a713-62f69af27f0b",
+                    "leftValue": "={{ $('Get count of failures').item.json.common_value }}",
+                    "rightValue": 0,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "9c3ff421-6159-47dc-87ee-42380c9d8fac",
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -224,
+        128
+      ],
+      "id": "caf59e14-c116-4796-b570-14c5cb40b131",
+      "name": "Has state of scraper changed?"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Set failure field name",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set failure field name": {
+      "main": [
+        [
+          {
+            "node": "Get count of failures",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get count of failures": {
+      "main": [
+        [
+          {
+            "node": "Check passphrase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check passphrase": {
+      "main": [
+        [
+          {
+            "node": "Has state of scraper changed?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Increase counter of failures",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send info: Scraper is up!": {
+      "main": [
+        [
+          {
+            "node": "Reset counter of failures",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reset counter of failures": {
+      "main": [
+        [
+          {
+            "node": "Set passphrase check to passed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Increase counter of failures": {
+      "main": [
+        [
+          {
+            "node": "Is needed to trigger alert?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is needed to trigger alert?": {
+      "main": [
+        [
+          {
+            "node": "Send alert: Scraper is down!",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set passphrase check to failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send alert: Scraper is down!": {
+      "main": [
+        [
+          {
+            "node": "Set passphrase check to failed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set passphrase check to passed": {
+      "main": [
+        [
+          {
+            "node": "Generate output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set passphrase check to failed": {
+      "main": [
+        [
+          {
+            "node": "Generate output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Has state of scraper changed?": {
+      "main": [
+        [
+          {
+            "node": "Send info: Scraper is up!",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Reset counter of failures",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set passphrase check to passed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionTimeout": 300,
+    "errorWorkflow": "n4q0YGy9YralQ4w7"
+  },
+  "versionId": "4a981466-55db-4f2c-a481-aa9a735c9c84",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "6a4b707915e44f6a161ae3035fd83d24e83ca5a7e087ad6cba1b954eda6e2dbd"
+  },
+  "id": "KVt6hvkrhW9TUpXr",
+  "tags": []
+}

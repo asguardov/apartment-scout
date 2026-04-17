@@ -1,0 +1,105 @@
+{
+  "name": "Login&Click",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "phone_button_selector",
+              "type": "any"
+            },
+            {
+              "name": "phone_form_selector",
+              "type": "any"
+            },
+            {
+              "name": "link",
+              "type": "any"
+            },
+            {
+              "name": "password_form_selector",
+              "type": "any"
+            },
+            {
+              "name": "success_login_selector",
+              "type": "any"
+            },
+            {
+              "name": "login_button_selector",
+              "type": "any"
+            },
+            {
+              "name": "login_form_selector",
+              "type": "any"
+            },
+            {
+              "name": "login_cookie_name",
+              "type": "any"
+            },
+            {
+              "name": "login_url",
+              "type": "any"
+            },
+            {
+              "name": "host"
+            }
+          ]
+        }
+      },
+      "id": "00d071a1-cf5e-4c4e-8ad7-c25af4ced445",
+      "typeVersion": 1.1,
+      "name": "Start",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "runCustomScript",
+        "scriptCode": "=$page.setDefaultNavigationTimeout(240000);\nconst CREDS = require('/home/node/.n8n/nodes/node_modules/creds.js');\n\nfunction isCookieExpired(cookie) {\n  if (!cookie) return true;\n  if (cookie.expires === -1) return false;\n  return cookie.expires < (Date.now() / 1000);\n}\n\nconst url = '{{ $('Start').item.json.login_url }}';\n\nasync function getTargetCookie(cookieName) {\n  const cookies = await $page.cookies(url);\n  return cookies.find(cookie => cookie.name === cookieName);\n}\n\nconst loginCookieName = '{{ $('Start').item.json.login_cookie_name }}';\nlet targetCookie = await getTargetCookie(loginCookieName);\n\nlet loginTriggered = isCookieExpired(targetCookie);\nif (loginTriggered) {\n  const account = CREDS['{{ $('Start').item.json.host }}'];\n\n  await $page.goto(url, { waitUntil: 'domcontentloaded' });\n  await $page.waitForSelector('{{ $('Start').item.json.login_form_selector }}', { timeout: 30000 });\n  await $page.type('{{ $('Start').item.json.login_form_selector }}', account.login);\n  await $page.type('{{ $('Start').item.json.password_form_selector }}', account.password);\n  await $page.click('{{ $('Start').item.json.login_button_selector }}');\n  await $page.waitForSelector('{{ $('Start').item.json.success_login_selector }}', { timeout: 30000 });\n\n  targetCookie = await getTargetCookie(loginCookieName);\n}\n\nawait $page.goto('{{ $('Start').item.json.link }}', { waitUntil: 'domcontentloaded' });\nawait $page.waitForSelector('{{ $('Start').item.json.phone_button_selector }}', { timeout: 30000 });\nawait $page.click('{{ $('Start').item.json.phone_button_selector }}');\n\nlet phoneTimeout = false;\ntry {\n    await $page.waitForSelector('{{ $('Start').item.json.phone_form_selector }}', { timeout: 30000, visible: true });\n} catch (error) {\n    phoneTimeout = true;\n}\n\nconst pageContent = await $page.content();\n\nreturn [{\n  json: {\n    login_cookie_name: loginCookieName,\n    is_update_cookie_triggered: loginTriggered,\n    login_expires: DateTime.fromMillis(targetCookie.expires * 1000).toFormat('yyyy-MM-dd HH:mm:ss'),\n    data: pageContent,\n    is_get_phone_timeout: phoneTimeout\n  }\n}];",
+        "options": {
+          "browserWSEndpoint": "={{ $env.BROWSERLESS_CONNECTION_STRING + $env.APART_BROWSERLESS_PARAMS }}"
+        }
+      },
+      "type": "n8n-nodes-puppeteer.puppeteer",
+      "typeVersion": 1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "e33e1e76-eac7-47ac-b260-51932b37884e",
+      "name": "Login and click 'show phone' button"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Login and click 'show phone' button",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "RyYik6gC7BYwJlxA"
+  },
+  "versionId": "65ed19b9-1bc1-4c3f-bd6a-927694fc1cbd",
+  "meta": {
+    "instanceId": "d2311f6e099c4a7ea494b924b708c4c36ed2bcb1fa90d07654f1651c42da238f"
+  },
+  "id": "I6XmH8mVLb2dawH9",
+  "tags": []
+}

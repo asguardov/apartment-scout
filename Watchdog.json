@@ -1,0 +1,68 @@
+{
+  "name": "Watchdog",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "19d245da-f907-4039-a72f-7a7d937c706d",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.APART_TELEGRAM_CHAT_ID }}",
+        "text": "={{\n\n'Execution [' + $('Error Trigger').item.json.execution.id + '](' + $('Error Trigger').item.json.execution.url + ')' + ' is failed!'\n\n}}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "adc49e92-68fa-4f26-9a28-bc65b6514773",
+      "name": "Send alert",
+      "webhookId": "7ba4c837-9f25-4507-86d6-193793eba872",
+      "credentials": {
+        "telegramApi": {
+          "id": "TqrbNZ2ZgvZ27LQv",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "2c27f5f4-7bee-4fa3-b95e-993323aea001",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d2311f6e099c4a7ea494b924b708c4c36ed2bcb1fa90d07654f1651c42da238f"
+  },
+  "id": "RyYik6gC7BYwJlxA",
+  "tags": []
+}
