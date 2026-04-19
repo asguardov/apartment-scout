@@ -18,7 +18,7 @@
           ]
         }
       },
-      "id": "31d3ee46-065e-47b7-a27e-38f0c3f7a096",
+      "id": "4c2b59a6-770c-4cd9-931a-fc4e5c6c5a1d",
       "typeVersion": 1.1,
       "name": "Start",
       "type": "n8n-nodes-base.executeWorkflowTrigger",
@@ -54,7 +54,7 @@
         -896,
         368
       ],
-      "id": "ced4621e-5222-4726-a144-8eb1ac3b86d2",
+      "id": "1ecb6366-487f-4caa-91fc-30e270c6f11d",
       "name": "Set failure field name"
     },
     {
@@ -62,10 +62,10 @@
         "operation": "get",
         "dataTableId": {
           "__rl": true,
-          "value": "Vyxuuo6JthkpAG2m",
+          "value": "5RNwWnjQ611EiAJt",
           "mode": "list",
           "cachedResultName": "apart_misc",
-          "cachedResultUrl": "/projects/FIPGb9t2kll3gyD4/datatables/Vyxuuo6JthkpAG2m"
+          "cachedResultUrl": "/projects/57MVoHDMd1vsJxH4/datatables/5RNwWnjQ611EiAJt"
         },
         "matchType": "allConditions",
         "filters": {
@@ -84,7 +84,7 @@
         -672,
         368
       ],
-      "id": "f559d6c2-32c7-48f3-aa7c-c8a324e2eaf5",
+      "id": "6cfc0283-1c07-4794-b291-47d383ab2fad",
       "name": "Get count of failures",
       "alwaysOutputData": true
     },
@@ -150,7 +150,7 @@
         -448,
         368
       ],
-      "id": "482b5af9-a39c-46c4-bfb3-bc7dfef661c6",
+      "id": "ef098982-cdc6-4292-8015-f8d08d2df628",
       "name": "Check passphrase"
     },
     {
@@ -168,12 +168,12 @@
         0,
         0
       ],
-      "id": "47ef7548-3dc4-40fe-b710-6c04ff9232fe",
+      "id": "c5e0811b-e63c-4420-8f9b-05be51bc3426",
       "name": "Send info: Scraper is up!",
       "webhookId": "ac41d86f-da20-4b7a-b8ef-c14f730b07bb",
       "credentials": {
         "telegramApi": {
-          "id": "4QrKerBSFNBAsQoo",
+          "id": "TqrbNZ2ZgvZ27LQv",
           "name": "Telegram account"
         }
       }
@@ -183,10 +183,10 @@
         "operation": "upsert",
         "dataTableId": {
           "__rl": true,
-          "value": "Vyxuuo6JthkpAG2m",
+          "value": "5RNwWnjQ611EiAJt",
           "mode": "list",
           "cachedResultName": "apart_misc",
-          "cachedResultUrl": "/projects/FIPGb9t2kll3gyD4/datatables/Vyxuuo6JthkpAG2m"
+          "cachedResultUrl": "/projects/57MVoHDMd1vsJxH4/datatables/5RNwWnjQ611EiAJt"
         },
         "filters": {
           "conditions": [
@@ -236,7 +236,7 @@
         224,
         80
       ],
-      "id": "699d9ad6-6626-4265-b79b-c5750ae073fb",
+      "id": "1b8f2d62-da34-4ede-aa67-11266d3f8ae2",
       "name": "Reset counter of failures"
     },
     {
@@ -244,10 +244,10 @@
         "operation": "upsert",
         "dataTableId": {
           "__rl": true,
-          "value": "Vyxuuo6JthkpAG2m",
+          "value": "5RNwWnjQ611EiAJt",
           "mode": "list",
           "cachedResultName": "apart_misc",
-          "cachedResultUrl": "/projects/FIPGb9t2kll3gyD4/datatables/Vyxuuo6JthkpAG2m"
+          "cachedResultUrl": "/projects/57MVoHDMd1vsJxH4/datatables/5RNwWnjQ611EiAJt"
         },
         "matchType": "allConditions",
         "filters": {
@@ -298,7 +298,7 @@
         -224,
         480
       ],
-      "id": "4d4aecc0-64f5-461a-a7e9-dbd6b7c7d089",
+      "id": "8148284c-671e-475c-b93c-04facebb533f",
       "name": "Increase counter of failures"
     },
     {
@@ -332,7 +332,7 @@
         0,
         480
       ],
-      "id": "c68d11b0-b0ed-4292-8477-4421cece2ed8",
+      "id": "4391d7d6-1adc-406c-be5f-556110e17350",
       "name": "Is needed to trigger alert?"
     },
     {
@@ -350,12 +350,12 @@
         224,
         416
       ],
-      "id": "4177ac14-7aa3-4acd-a815-976038edc2c2",
+      "id": "d9c5af16-e565-4381-b814-8332d5ff0802",
       "name": "Send alert: Scraper is down!",
       "webhookId": "ac41d86f-da20-4b7a-b8ef-c14f730b07bb",
       "credentials": {
         "telegramApi": {
-          "id": "4QrKerBSFNBAsQoo",
+          "id": "TqrbNZ2ZgvZ27LQv",
           "name": "Telegram account"
         }
       }
@@ -380,7 +380,7 @@
         448,
         144
       ],
-      "id": "7acef10c-cf82-4f04-be93-2b2f1fd11c03",
+      "id": "cf32d650-0107-4dc3-930b-c018cf87ffb7",
       "name": "Set passphrase check to passed"
     },
     {
@@ -403,7 +403,7 @@
         448,
         480
       ],
-      "id": "c1e4a099-8349-4dc2-8b5e-207110d833c1",
+      "id": "5be6e663-f743-4fb3-8e6f-98d05fbac937",
       "name": "Set passphrase check to failed"
     },
     {
@@ -433,7 +433,7 @@
         672,
         288
       ],
-      "id": "4dbac257-3a59-49f1-a736-310cce54c0ad",
+      "id": "ca501c94-80aa-4ac4-a87e-a0d09d96eb18",
       "name": "Generate output"
     },
     {
@@ -520,7 +520,7 @@
         -224,
         128
       ],
-      "id": "caf59e14-c116-4796-b570-14c5cb40b131",
+      "id": "633b1470-38bb-4958-b4db-fe819bfa8a4e",
       "name": "Has state of scraper changed?"
     }
   ],
@@ -690,17 +690,13 @@
   "active": true,
   "settings": {
     "executionOrder": "v1",
-    "availableInMCP": false,
-    "timeSavedMode": "fixed",
-    "callerPolicy": "workflowsFromSameOwner",
-    "executionTimeout": 300,
-    "errorWorkflow": "n4q0YGy9YralQ4w7"
+    "availableInMCP": false
   },
-  "versionId": "4a981466-55db-4f2c-a481-aa9a735c9c84",
+  "versionId": "4aeee868-910f-4174-9799-060e770373b0",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "6a4b707915e44f6a161ae3035fd83d24e83ca5a7e087ad6cba1b954eda6e2dbd"
+    "instanceId": "d2311f6e099c4a7ea494b924b708c4c36ed2bcb1fa90d07654f1651c42da238f"
   },
-  "id": "KVt6hvkrhW9TUpXr",
+  "id": "S11FDyi0jljiMt7y",
   "tags": []
 }

@@ -15,18 +15,19 @@ Automated n8n workflow to scrape, filter, and notify about new apartment listing
     * **Low info noise:** Designed to minimize the number of alerts, with a maximum of 1 notification per listing per day.
 
 ## Workflows
-
-1.  **`Apart.json` (Main workflow):**
+1.  **`Entry.json` (Orchestrator):**
+    * Initiates scrapers asynchronously to maximize efficiency and reduce total execution time.
+2.  **`Apart.json` (Main workflow):**
     *   Runs on a schedule to fetch listings.
     *   Parses HTML using Python.
     *   Filters, deduplicates, and saves data.
     *   Sends notifications to Telegram.
-2.  **`Login&Click.json` (Helper):**
+3.  **`Login&Click.json` (Helper):**
     *   Handles login procedures for sites requiring authentication.
     *   Clicks buttons to reveal hidden contact information (phone numbers).
-3.  **`Antiflapping.json` (Monitoring):**
+4.  **`Antiflapping.json` (Monitoring):**
     *   Suppresses alerts during intermittent scraping errors.
-4.  **`Watchdog.json` (Monitoring):**
+5.  **`Watchdog.json` (Monitoring):**
     *   Global error handler that alerts on any workflow failure.
 
 
@@ -42,7 +43,7 @@ x-environment: &n8n-environment
   NODE_FUNCTION_ALLOW_EXTERNAL: 'creds.js'
   N8N_BLOCK_ENV_ACCESS_IN_NODE: false
   BROWSERLESS_CONNECTION_STRING: 'ws://browser:3000/'
-  APART_BROWSERLESS_PARAMS: '?--user-data-dir=apart_cache&stealth=false&headless=true'
+  APART_BROWSERLESS_PARAMS: '?--user-data-dir=apart_cache/'
   APART_TELEGRAM_CHAT_ID: 123456789
   APART_TELEGRAM_CALLBACK_DATA_DN_BUTTON_TEXT: 'Mute this listing'
 

@@ -1,0 +1,238 @@
+{
+  "name": "Entry",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 6,
+              "triggerAtMinute": 3
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        192
+      ],
+      "id": "f56ab038-24d1-44b9-9849-ceb4ed608008",
+      "name": "Run heartbeat"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "149a5589-b054-428f-be3c-f565ba89a623",
+      "name": "Run every 5 minutes"
+    },
+    {
+      "parameters": {
+        "operation": "deleteRows",
+        "dataTableId": {
+          "__rl": true,
+          "value": "3VbXe6UBgJ7tu5lI",
+          "mode": "list",
+          "cachedResultName": "apart",
+          "cachedResultUrl": "/projects/57MVoHDMd1vsJxH4/datatables/3VbXe6UBgJ7tu5lI"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "createdAt",
+              "condition": "lt",
+              "keyValue": "={{ $now.minus(25, 'hours') }}"
+            },
+            {
+              "keyName": "disableNotifications",
+              "condition": "isFalse"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        224,
+        192
+      ],
+      "id": "eeb71f23-6161-4a65-be34-9058ddec0c09",
+      "name": "Cleanup data table",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "1oSJVQh39DjVJgtI",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/1oSJVQh39DjVJgtI",
+          "cachedResultName": "Apart"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "host": "onliner.by",
+            "is_triggered_by_heartbeat": "={{ $('Run heartbeat').isExecuted }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "host",
+              "displayName": "host",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "is_triggered_by_heartbeat",
+              "displayName": "is_triggered_by_heartbeat",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "boolean",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        224,
+        0
+      ],
+      "id": "216c453e-172c-4fde-8794-bba168236e08",
+      "name": "Scrape onliner.by"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "1oSJVQh39DjVJgtI",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/1oSJVQh39DjVJgtI",
+          "cachedResultName": "Apart"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "host": "neagent.by",
+            "is_triggered_by_heartbeat": "={{ $('Run heartbeat').isExecuted }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "host",
+              "displayName": "host",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            },
+            {
+              "id": "is_triggered_by_heartbeat",
+              "displayName": "is_triggered_by_heartbeat",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "boolean",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": false
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        448,
+        0
+      ],
+      "id": "0e4b60ac-83d3-4dce-b8d0-06386f6b0aa9",
+      "name": "Scrape neagent.by"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Run heartbeat": {
+      "main": [
+        [
+          {
+            "node": "Scrape onliner.by",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Cleanup data table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run every 5 minutes": {
+      "main": [
+        [
+          {
+            "node": "Scrape onliner.by",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scrape onliner.by": {
+      "main": [
+        [
+          {
+            "node": "Scrape neagent.by",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "8c8a231b-7173-43b4-a8dd-5477558ffe6f",
+  "meta": {
+    "instanceId": "d2311f6e099c4a7ea494b924b708c4c36ed2bcb1fa90d07654f1651c42da238f"
+  },
+  "id": "Q0ppA1OFagMGpB8Y",
+  "tags": []
+}

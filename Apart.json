@@ -62,7 +62,7 @@
         224,
         0
       ],
-      "id": "b53e800d-67f6-4485-ac3f-b942f540c79d",
+      "id": "b2f5df10-0814-4c63-a34f-ad23c279f37a",
       "name": "Choose button"
     },
     {
@@ -70,10 +70,10 @@
         "operation": "update",
         "dataTableId": {
           "__rl": true,
-          "value": "iAwaa0xgcxDYOvoH",
+          "value": "3VbXe6UBgJ7tu5lI",
           "mode": "list",
           "cachedResultName": "apart",
-          "cachedResultUrl": "/projects/FIPGb9t2kll3gyD4/datatables/iAwaa0xgcxDYOvoH"
+          "cachedResultUrl": "/projects/57MVoHDMd1vsJxH4/datatables/3VbXe6UBgJ7tu5lI"
         },
         "matchType": "allConditions",
         "filters": {
@@ -157,7 +157,7 @@
         448,
         0
       ],
-      "id": "78bddedd-54d4-411e-a807-da805a1d2614",
+      "id": "e3a4ff43-2e81-4974-9c5d-f906a22fd159",
       "name": "Disable notifications for apart in data table"
     },
     {
@@ -173,12 +173,12 @@
         0,
         0
       ],
-      "id": "87a550ee-bd43-46db-81b8-50820daf4743",
+      "id": "3c285748-ceed-435f-882f-4eba1397ba20",
       "name": "Buttons listener",
       "webhookId": "62842082-5560-4b9e-8a00-0b886ffaaf15",
       "credentials": {
         "telegramApi": {
-          "id": "4QrKerBSFNBAsQoo",
+          "id": "TqrbNZ2ZgvZ27LQv",
           "name": "Telegram account"
         }
       }
@@ -191,9 +191,9 @@
       "typeVersion": 1.1,
       "position": [
         4704,
-        688
+        624
       ],
-      "id": "d5033122-3170-47f0-b6fe-0976e851f88c",
+      "id": "03dcb251-dae0-4e61-a773-6b39aca2f5b1",
       "name": "Timeout for avoid ban",
       "webhookId": "819f3278-d8d5-4089-abce-b6a5d3fc2687"
     },
@@ -202,10 +202,10 @@
         "operation": "upsert",
         "dataTableId": {
           "__rl": true,
-          "value": "iAwaa0xgcxDYOvoH",
+          "value": "3VbXe6UBgJ7tu5lI",
           "mode": "list",
           "cachedResultName": "apart",
-          "cachedResultUrl": "/projects/FIPGb9t2kll3gyD4/datatables/iAwaa0xgcxDYOvoH"
+          "cachedResultUrl": "/projects/57MVoHDMd1vsJxH4/datatables/3VbXe6UBgJ7tu5lI"
         },
         "matchType": "allConditions",
         "filters": {
@@ -293,9 +293,9 @@
       "typeVersion": 1,
       "position": [
         4480,
-        496
+        448
       ],
-      "id": "ae4d57f4-71cc-4e85-a334-33608c0fc3fd",
+      "id": "1d8a8fef-13f7-44a5-8521-2b5acb673ba0",
       "name": "Add apart to data table"
     },
     {
@@ -330,14 +330,14 @@
       "typeVersion": 1.2,
       "position": [
         4256,
-        320
+        288
       ],
-      "id": "183e9c95-1f4a-4fc7-9523-a170d9b8c186",
+      "id": "21be4697-de66-4590-ba3f-89c5c081f797",
       "name": "Send apart to user",
       "webhookId": "a65bbb06-18d7-4443-8cec-3e9cf8c59a5d",
       "credentials": {
         "telegramApi": {
-          "id": "4QrKerBSFNBAsQoo",
+          "id": "TqrbNZ2ZgvZ27LQv",
           "name": "Telegram account"
         }
       }
@@ -355,14 +355,14 @@
       "typeVersion": 1.2,
       "position": [
         4704,
-        272
+        224
       ],
-      "id": "1e62aebf-5a34-4465-97a1-5989e8b65930",
+      "id": "58027b02-7a38-4756-bd11-e4fa1ca8cb8f",
       "name": "Send warning about real estate agency",
       "webhookId": "20db04e9-0eab-48f0-91ca-eaae4b03426e",
       "credentials": {
         "telegramApi": {
-          "id": "4QrKerBSFNBAsQoo",
+          "id": "TqrbNZ2ZgvZ27LQv",
           "name": "Telegram account"
         }
       }
@@ -378,9 +378,9 @@
       "typeVersion": 4.3,
       "position": [
         2688,
-        480
+        384
       ],
-      "id": "05efb0a1-22b4-48ea-85b3-27c5d23a646b",
+      "id": "aa3fa27a-6656-4d1c-9c24-4ed50fff49a3",
       "name": "Get apart from onliner.by"
     },
     {
@@ -392,9 +392,9 @@
       "typeVersion": 2,
       "position": [
         2912,
-        480
+        384
       ],
-      "id": "93468e1c-4d99-441d-bdc4-51f055c1430c",
+      "id": "d6814600-ed4b-45b1-8634-48ee4b2c6d0c",
       "name": "Parse apart from onliner.by"
     },
     {
@@ -456,9 +456,9 @@
       "typeVersion": 3.4,
       "position": [
         2464,
-        576
+        496
       ],
-      "id": "6e9220b0-f167-4955-92b5-97033789af6c",
+      "id": "b1118c51-ea1f-44a9-8a7b-8b9d440b8ded",
       "name": "Choose parser according domain"
     },
     {
@@ -469,9 +469,9 @@
       "typeVersion": 3,
       "position": [
         2240,
-        656
+        608
       ],
-      "id": "5a475056-ec98-4510-a901-777951b233f3",
+      "id": "142379f1-25af-48c5-a2ac-a60274a14760",
       "name": "Loop over aparts list"
     },
     {
@@ -505,9 +505,9 @@
       "typeVersion": 2.3,
       "position": [
         1792,
-        656
+        608
       ],
-      "id": "d333f557-17ef-425a-9544-739179e461e3",
+      "id": "0df70436-27f4-41a9-a6df-8bea75015b58",
       "name": "Filter aparts for the last 24 hours"
     },
     {
@@ -519,15 +519,15 @@
       "typeVersion": 1,
       "position": [
         1568,
-        656
+        608
       ],
-      "id": "23119e4d-c2c4-41dd-8390-af2a128767b6",
+      "id": "a8ccfba1-50c9-4d9c-9d4e-a344231bd9e7",
       "name": "Extract list of aparts"
     },
     {
       "parameters": {
         "chatId": "={{ $env.APART_TELEGRAM_CHAT_ID }}",
-        "text": "=Found {{ $('Concatenate aparts lists from all sites').item.json.total_apartments }} apartments at {{ $('Concatenate aparts lists from all sites').item.json.source }}",
+        "text": "=Found {{ $json.total_apartments }} apartments at {{ $json.source }}",
         "additionalFields": {
           "appendAttribution": false,
           "disable_notification": false
@@ -537,14 +537,14 @@
       "typeVersion": 1.2,
       "position": [
         1568,
-        464
+        368
       ],
-      "id": "f2625778-4183-4671-ba17-cec17a8a72a0",
+      "id": "e39d9027-fe23-4a48-8f07-4961eb40364e",
       "name": "Send statistic for each site",
       "webhookId": "ac41d86f-da20-4b7a-b8ef-c14f730b07bb",
       "credentials": {
         "telegramApi": {
-          "id": "4QrKerBSFNBAsQoo",
+          "id": "TqrbNZ2ZgvZ27LQv",
           "name": "Telegram account"
         }
       }
@@ -553,15 +553,15 @@
       "parameters": {
         "workflowId": {
           "__rl": true,
-          "value": "KVt6hvkrhW9TUpXr",
+          "value": "S11FDyi0jljiMt7y",
           "mode": "list",
-          "cachedResultUrl": "/workflow/KVt6hvkrhW9TUpXr",
+          "cachedResultUrl": "/workflow/S11FDyi0jljiMt7y",
           "cachedResultName": "Antiflapping"
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
           "value": {
-            "host": "onliner.by",
+            "host": "={{ $('Start').item.json.host }}",
             "passphrase": "Переход в объявление",
             "body": "={{ $('Get aparts list from onliner.by').item.json.body }}"
           },
@@ -609,25 +609,25 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        448,
-        464
+        672,
+        368
       ],
       "name": "Call Antiflapping for onliner.by",
-      "id": "20466d46-dd9e-4e87-807c-00df0f31dc7e"
+      "id": "52db6079-da29-4937-9337-a664439a1f5e"
     },
     {
       "parameters": {
         "workflowId": {
           "__rl": true,
-          "value": "KVt6hvkrhW9TUpXr",
+          "value": "S11FDyi0jljiMt7y",
           "mode": "list",
-          "cachedResultUrl": "/workflow/KVt6hvkrhW9TUpXr",
+          "cachedResultUrl": "/workflow/S11FDyi0jljiMt7y",
           "cachedResultName": "Antiflapping"
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
           "value": {
-            "host": "neagent.by",
+            "host": "={{ $('Start').item.json.host }}",
             "passphrase": "Узнать больше",
             "body": "={{ $('Get aparts list from neagent.by').item.json.data }}"
           },
@@ -675,57 +675,21 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        448,
-        656
+        672,
+        560
       ],
       "name": "Call Antiflapping for neagent.by",
-      "id": "deb69b09-f465-41bf-9e14-c8c96f6a000d"
-    },
-    {
-      "parameters": {
-        "operation": "deleteRows",
-        "dataTableId": {
-          "__rl": true,
-          "value": "iAwaa0xgcxDYOvoH",
-          "mode": "list",
-          "cachedResultName": "apart",
-          "cachedResultUrl": "/projects/FIPGb9t2kll3gyD4/datatables/iAwaa0xgcxDYOvoH"
-        },
-        "matchType": "allConditions",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "createdAt",
-              "condition": "lt",
-              "keyValue": "={{ $now.minus(25, 'hours') }}"
-            },
-            {
-              "keyName": "disableNotifications",
-              "condition": "isFalse"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.dataTable",
-      "typeVersion": 1,
-      "position": [
-        224,
-        224
-      ],
-      "id": "fd770906-2332-4c57-9ed0-0de27f868699",
-      "name": "Cleanup data table",
-      "alwaysOutputData": false
+      "id": "9d4b3cc3-ed99-4a7b-b8a6-addc4b7a377d"
     },
     {
       "parameters": {
         "operation": "rowNotExists",
         "dataTableId": {
           "__rl": true,
-          "value": "iAwaa0xgcxDYOvoH",
+          "value": "3VbXe6UBgJ7tu5lI",
           "mode": "list",
           "cachedResultName": "apart",
-          "cachedResultUrl": "/projects/FIPGb9t2kll3gyD4/datatables/iAwaa0xgcxDYOvoH"
+          "cachedResultUrl": "/projects/57MVoHDMd1vsJxH4/datatables/3VbXe6UBgJ7tu5lI"
         },
         "matchType": "allConditions",
         "filters": {
@@ -745,16 +709,21 @@
       "typeVersion": 1,
       "position": [
         2016,
-        656
+        608
       ],
-      "id": "35211e1a-34eb-42ba-8cbd-dde2b5cc2502",
+      "id": "334ddf4a-42a4-427b-bb85-3d593682f909",
       "name": "Discard aparts which already parsed"
     },
     {
       "parameters": {
-        "url": "https://r.onliner.by/ak/?price%5Bmin%5D=50&price%5Bmax%5D=130&currency=usd&only_owner=true#bounds%5Blb%5D%5Blat%5D=53.64056725131206&bounds%5Blb%5D%5Blong%5D=27.124557495117188&bounds%5Brt%5D%5Blat%5D=54.151577906757886&bounds%5Brt%5D%5Blong%5D=27.998657226562504",
+        "url": "https://r.onliner.by/ak/?currency=USD&price%5Bmin%5D=400&price%5Bmax%5D=500&only_owner=true&rent_type%5B%5D=1_room&rent_type%5B%5D=2_rooms&rent_type%5B%5D=3_rooms&rent_type%5B%5D=4_rooms&rent_type%5B%5D=5_rooms&rent_type%5B%5D=6_rooms#bounds%5Blb%5D%5Blat%5D=53.63323922888165&bounds%5Blb%5D%5Blong%5D=27.125244140625004&bounds%5Brt%5D%5Blat%5D=54.16122787964904&bounds%5Brt%5D%5Blong%5D=27.998657226562504",
         "options": {
-          "browserWSEndpoint": "={{ $env.BROWSERLESS_CONNECTION_STRING }}",
+          "browserWSEndpoint": "={{ $env.BROWSERLESS_CONNECTION_STRING + $env.APART_BROWSERLESS_PARAMS + $('Start').item.json.host }}",
+          "launchArguments": {
+            "args": [
+              {}
+            ]
+          },
           "timeout": 120000,
           "waitUntil": "networkidle0"
         }
@@ -762,10 +731,10 @@
       "type": "n8n-nodes-puppeteer.puppeteer",
       "typeVersion": 1,
       "position": [
-        224,
-        464
+        448,
+        368
       ],
-      "id": "ab9eccff-a26a-443f-8440-0ca144ef6ead",
+      "id": "8b6591fb-c07f-4609-acd3-1d3a151bcdcb",
       "name": "Get aparts list from onliner.by",
       "retryOnFail": true,
       "waitBetweenTries": 5000,
@@ -774,7 +743,7 @@
     },
     {
       "parameters": {
-        "url": "https://neagent.by/komnata/snyat?hasPhotos=1",
+        "url": "https://neagent.by/kvartira/snyat?hasPhotos=1",
         "options": {
           "response": {
             "response": {
@@ -788,10 +757,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        224,
-        656
+        448,
+        560
       ],
-      "id": "c55e6c33-9936-4a16-be70-36aa1d7622cc",
+      "id": "200da56a-3414-423f-9c14-ec426538c332",
       "name": "Get aparts list from neagent.by",
       "retryOnFail": true,
       "maxTries": 2,
@@ -806,10 +775,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        896,
-        464
+        1120,
+        368
       ],
-      "id": "e113d062-2d6a-4b3b-bec9-94782513cb7e",
+      "id": "3a1a4579-edeb-492d-9962-b41f83a85c45",
       "name": "Parse aparts list from onliner.by"
     },
     {
@@ -820,10 +789,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        896,
-        656
+        1120,
+        560
       ],
-      "id": "9f960e41-5407-44bf-af6a-945702e6b6a2",
+      "id": "154da84e-7d73-47e8-8286-9950fa262bbb",
       "name": "Parse aparts list from neagent.by"
     },
     {
@@ -841,34 +810,23 @@
         672,
         0
       ],
-      "id": "fefeff2f-0306-4dec-adbb-278dcde4fffa",
+      "id": "cb580e18-a243-4d9c-a1b3-83deec940019",
       "name": "Send feedback to user after click button",
       "webhookId": "eba5be42-95dd-4a0e-aad9-347f358f27e1",
       "credentials": {
         "telegramApi": {
-          "id": "4QrKerBSFNBAsQoo",
+          "id": "TqrbNZ2ZgvZ27LQv",
           "name": "Telegram account"
         }
       }
     },
     {
-      "parameters": {},
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3.2,
-      "position": [
-        1120,
-        560
-      ],
-      "id": "19252800-059e-440c-b879-d9f3e81bd93b",
-      "name": "Concatenate aparts lists from all sites"
-    },
-    {
       "parameters": {
         "workflowId": {
           "__rl": true,
-          "value": "emAH8sKRnUMN8aF3",
+          "value": "ozyf0nyszXoJWgZc",
           "mode": "list",
-          "cachedResultUrl": "/workflow/emAH8sKRnUMN8aF3",
+          "cachedResultUrl": "/workflow/ozyf0nyszXoJWgZc",
           "cachedResultName": "Login&Click"
         },
         "workflowInputs": {
@@ -1001,10 +959,10 @@
       "typeVersion": 1.2,
       "position": [
         2688,
-        672
+        624
       ],
       "name": "Call Login&Click for neagent.by",
-      "id": "9e621859-6b27-49af-ad51-794785b5c448"
+      "id": "138bb935-1c1d-4f77-a3ea-f7162580dde6"
     },
     {
       "parameters": {
@@ -1024,9 +982,9 @@
       "typeVersion": 3.4,
       "position": [
         3360,
-        320
+        288
       ],
-      "id": "c6b42359-ad31-45d7-ac79-7e1cf5f24af3",
+      "id": "d501c86f-f170-4dd3-9ac1-2fb445782880",
       "name": "Create phones array"
     },
     {
@@ -1038,9 +996,9 @@
       "typeVersion": 1,
       "position": [
         3584,
-        320
+        288
       ],
-      "id": "4430f559-b7cf-43de-9188-2368516fda18",
+      "id": "0b3022c2-5acb-4b6a-aa8a-d1d3679f7c5c",
       "name": "Split phones array into items"
     },
     {
@@ -1058,9 +1016,9 @@
       "typeVersion": 1.1,
       "position": [
         4032,
-        320
+        288
       ],
-      "id": "344d81f0-7748-4fa7-abc0-5b1c958ab465",
+      "id": "e0550c6b-91f1-4695-bac4-2380b27e85c9",
       "name": "Count of listings with this phone"
     },
     {
@@ -1091,9 +1049,9 @@
       "typeVersion": 2.3,
       "position": [
         4480,
-        272
+        224
       ],
-      "id": "8a010344-15bf-4e16-9f11-83cd9eac47fc",
+      "id": "77172409-8923-42b2-afd6-00f8b3de9df6",
       "name": "Check if necessary to send warning "
     },
     {
@@ -1175,9 +1133,9 @@
       "typeVersion": 3.4,
       "position": [
         3136,
-        560
+        480
       ],
-      "id": "f3ecc51b-8fbb-4968-9fdb-489dc325eb58",
+      "id": "3f00e725-5b2d-4849-a8c0-7c198844eab0",
       "name": "Hide apart with specific keywords",
       "notes": "This node filters listings using specific keywords to minimize information overload. As an example, the site neagent.by delays the visibility of phone numbers for free users by one hour."
     },
@@ -1190,49 +1148,10 @@
       "typeVersion": 2,
       "position": [
         2912,
-        672
+        624
       ],
-      "id": "f1e83624-e1b4-4aaf-b83b-41aedb3e3049",
+      "id": "76aba528-5356-4f87-8c42-6b2b1d8c1b13",
       "name": "Parse apart from neagent.by"
-    },
-    {
-      "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "triggerAtHour": 6,
-              "triggerAtMinute": 3
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.3,
-      "position": [
-        0,
-        704
-      ],
-      "id": "53dcf28c-7064-4258-afb5-52d528f7b3f1",
-      "name": "Run heartbeat"
-    },
-    {
-      "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "field": "minutes"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.3,
-      "position": [
-        0,
-        368
-      ],
-      "id": "34316717-80c7-47de-8288-2807e61edf2b",
-      "name": "Run every 5 minutes"
     },
     {
       "parameters": {
@@ -1246,7 +1165,7 @@
           "conditions": [
             {
               "id": "5134d16e-531c-44d4-aac9-403cb36c4650",
-              "leftValue": "={{ $('Run heartbeat').isExecuted }}",
+              "leftValue": "={{ $('Start').item.json.is_triggered_by_heartbeat }}",
               "rightValue": 6,
               "operator": {
                 "type": "boolean",
@@ -1263,9 +1182,9 @@
       "typeVersion": 2.3,
       "position": [
         1344,
-        560
+        464
       ],
-      "id": "50d05f7f-e055-4180-a0e6-a2897ae583e0",
+      "id": "fc8ef9d1-60f3-44cb-8e25-7c5c4f456a53",
       "name": "Check if necessary to send heartbeat"
     },
     {
@@ -1326,10 +1245,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        672,
-        464
+        896,
+        368
       ],
-      "id": "d35162b5-0e02-4485-8062-b94455ea8eeb",
+      "id": "4a4a90e5-d0be-4d8c-9cb6-e3e8814f650b",
       "name": "Check passphrase for onliner.by"
     },
     {
@@ -1390,10 +1309,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        672,
-        656
+        896,
+        560
       ],
-      "id": "4c9dea62-6b36-4936-8241-89b51a038991",
+      "id": "2d20074e-3b97-4f85-9dbc-a69822e89e4e",
       "name": "Check passphrase for neagent.by"
     },
     {
@@ -1401,10 +1320,10 @@
         "operation": "get",
         "dataTableId": {
           "__rl": true,
-          "value": "iAwaa0xgcxDYOvoH",
+          "value": "3VbXe6UBgJ7tu5lI",
           "mode": "list",
           "cachedResultName": "apart",
-          "cachedResultUrl": "/projects/FIPGb9t2kll3gyD4/datatables/iAwaa0xgcxDYOvoH"
+          "cachedResultUrl": "/projects/57MVoHDMd1vsJxH4/datatables/3VbXe6UBgJ7tu5lI"
         },
         "matchType": "allConditions",
         "filters": {
@@ -1425,11 +1344,98 @@
       "typeVersion": 1.1,
       "position": [
         3808,
-        320
+        288
       ],
-      "id": "c845c01e-5348-41e3-8071-90086fcc3af3",
+      "id": "d99bd437-229d-4f79-9382-bf4b5f1634e1",
       "name": "Check if phone already exists in data table",
       "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Start').item.json.host }}",
+                    "rightValue": "onliner.by",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "d4218edc-1636-4fda-b650-c65598d5f077"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "c7e65ec8-17c9-42a4-a713-62f69af27f0b",
+                    "leftValue": "={{ $('Start').item.json.host }}",
+                    "rightValue": "neagent.by",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        224,
+        464
+      ],
+      "id": "852fdf5e-3421-459a-99be-63e83be1abab",
+      "name": "Choose branch according domain"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "host"
+            },
+            {
+              "name": "is_triggered_by_heartbeat",
+              "type": "boolean"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        464
+      ],
+      "id": "a57dc21c-5ae4-42a9-a2e1-6d5281fa0504",
+      "name": "Start"
     }
   ],
   "pinData": {},
@@ -1616,7 +1622,7 @@
       "main": [
         [
           {
-            "node": "Concatenate aparts lists from all sites",
+            "node": "Check if necessary to send heartbeat",
             "type": "main",
             "index": 0
           }
@@ -1624,17 +1630,6 @@
       ]
     },
     "Parse aparts list from neagent.by": {
-      "main": [
-        [
-          {
-            "node": "Concatenate aparts lists from all sites",
-            "type": "main",
-            "index": 1
-          }
-        ]
-      ]
-    },
-    "Concatenate aparts lists from all sites": {
       "main": [
         [
           {
@@ -1736,43 +1731,6 @@
         ]
       ]
     },
-    "Run heartbeat": {
-      "main": [
-        [
-          {
-            "node": "Get aparts list from onliner.by",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Get aparts list from neagent.by",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Run every 5 minutes": {
-      "main": [
-        [
-          {
-            "node": "Cleanup data table",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Get aparts list from onliner.by",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Get aparts list from neagent.by",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Check if necessary to send heartbeat": {
       "main": [
         [
@@ -1845,6 +1803,35 @@
           }
         ]
       ]
+    },
+    "Choose branch according domain": {
+      "main": [
+        [
+          {
+            "node": "Get aparts list from onliner.by",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get aparts list from neagent.by",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Choose branch according domain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": true,
@@ -1854,13 +1841,13 @@
     "timeSavedMode": "fixed",
     "callerPolicy": "workflowsFromSameOwner",
     "executionTimeout": 300,
-    "errorWorkflow": "n4q0YGy9YralQ4w7"
+    "errorWorkflow": "RnKMM0VLiMMCxLbg"
   },
-  "versionId": "d11c87e0-4af0-4e11-82c2-af07f24c9fd1",
+  "versionId": "87346832-0005-40a7-b9b9-1e82b31277a8",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "6a4b707915e44f6a161ae3035fd83d24e83ca5a7e087ad6cba1b954eda6e2dbd"
+    "instanceId": "d2311f6e099c4a7ea494b924b708c4c36ed2bcb1fa90d07654f1651c42da238f"
   },
-  "id": "A6NNUy0XmuGLUw51",
+  "id": "1oSJVQh39DjVJgtI",
   "tags": []
 }
